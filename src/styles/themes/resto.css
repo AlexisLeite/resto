@@ -1,0 +1,71 @@
+/* Única fuente de colores literales. Cambiar esta paleta propaga el tema completo. */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --palette-navigation: #345465;
+  --palette-navigation-text: #f5f9fb;
+  --palette-stone-blue: #405a6a;
+  --palette-stone-blue-fill: #d6e1e7;
+  --palette-honey: #71500c;
+  --palette-honey-fill: #f6d77c;
+  --palette-honey-border: #b58a22;
+  --palette-sidebar: #242622;
+  --palette-sidebar-text: #f6f6f2;
+  --palette-sidebar-muted: #b8bbb2;
+  --palette-background: #f5f5f2;
+  --palette-paper: #ffffff;
+  --palette-elevated: #eeefea;
+  --palette-text: #292c26;
+  --palette-muted: #666b60;
+  --palette-disabled: #7a8074;
+  --palette-border: #dedfd7;
+  --palette-border-strong: #a7ad9f;
+  --palette-primary: #394635;
+  --palette-primary-dark: #293426;
+  --palette-primary-light: #52624c;
+  --palette-on-primary: #ffffff;
+  --palette-secondary: #51574b;
+  --palette-secondary-dark: #373d33;
+  --palette-secondary-light: #727b68;
+  --palette-on-secondary: #ffffff;
+  --palette-success: #39734b;
+  --palette-warning: #8b611e;
+  --palette-error: #b03e38;
+  --palette-info: #5d6854;
+  --palette-shadow: #242622;
+  --palette-transparent: #00000000;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --palette-navigation: #294858;
+  --palette-navigation-text: #f5f9fb;
+  --palette-stone-blue: #a6c1d0;
+  --palette-stone-blue-fill: #334955;
+  --palette-honey: #f0cc74;
+  --palette-honey-fill: #56441c;
+  --palette-honey-border: #d1a84a;
+  --palette-sidebar: #1b1e19;
+  --palette-sidebar-text: #f6f6f2;
+  --palette-sidebar-muted: #b8bbb2;
+  --palette-background: #232620;
+  --palette-paper: #2b2f27;
+  --palette-elevated: #353a30;
+  --palette-text: #f1f3eb;
+  --palette-muted: #b8bfae;
+  --palette-disabled: #969f8b;
+  --palette-border: #454c3e;
+  --palette-border-strong: #727b68;
+  --palette-primary: #c3d3b5;
+  --palette-primary-dark: #d7e3cc;
+  --palette-primary-light: #a9c096;
+  --palette-on-primary: #26321e;
+  --palette-secondary: #c6ccbd;
+  --palette-secondary-dark: #dbe0d3;
+  --palette-secondary-light: #aeb69f;
+  --palette-on-secondary: #2c3225;
+  --palette-success: #a6d4ab;
+  --palette-warning: #eac384;
+  --palette-error: #f2a6a1;
+  --palette-info: #c4cfb7;
+  --palette-shadow: #000000;
+}

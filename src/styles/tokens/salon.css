@@ -1,0 +1,68 @@
+:root {
+  --app-navigation-bg: var(--surface-navigation);
+  --app-navigation-border: var(--border-navigation);
+  --app-navigation-text: var(--text-navigation);
+  --app-navigation-hover: var(--navigation-hover);
+  --app-navigation-active: var(--navigation-active);
+  --salon-nav-selected-bg: var(--text-navigation);
+  --salon-nav-selected-text: var(--surface-navigation);
+  --salon-nav-disabled-text: color-mix(
+    in srgb,
+    var(--text-navigation) 40%,
+    var(--surface-navigation)
+  );
+  --salon-rail-width: 17rem;
+  --salon-receipt-width: 24rem;
+  --salon-desk-offset: 13rem;
+  --salon-desk-min-height: 31rem;
+  --salon-table-min: 10rem;
+  --salon-table-size: 4rem;
+  --salon-dialog-width: 32rem;
+  --salon-quantity-width: 4rem;
+  --salon-mobile-offset: 17rem;
+  --salon-mobile-min-height: 22rem;
+  --salon-mobile-dock: 5rem;
+  --salon-picker-width: 10rem;
+  --salon-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --salon-feedback-width: 27rem;
+  --salon-feedback-layer: 30;
+  --salon-table-border: var(--border-default);
+  --salon-table-hover: var(--border-strong);
+  --salon-table-bg: var(--surface-panel);
+  --salon-table-active: var(--primary-readonly);
+  --salon-table-free: var(--text-secondary);
+  --salon-table-free-fill: var(--surface-muted);
+  --salon-table-busy: var(--table-occupied-color);
+  --salon-table-busy-fill: var(--table-occupied-surface);
+  --salon-table-ready: var(--table-delivery-color);
+  --salon-table-ready-fill: var(--table-delivery-surface);
+  --salon-card-selected: var(--primary-selected);
+  --salon-card-hover: var(--primary-readonly);
+  --salon-control-selected: var(--surface-panel);
+  --salon-control-bg: var(--surface-muted);
+  --salon-price-color: var(--text-primary);
+}
+:root {
+  --salon-product-width: 17rem;
+}
+:root {
+  --salon-customizer-width: 48rem;
+  --variety-bg: var(--surface-panel);
+  --variety-border: var(--border-default);
+  --variety-hover: var(--primary-readonly);
+  --variety-active: var(--primary-selected);
+  --variety-selected: var(--primary-selected);
+  --variety-focus: var(--primary-focus);
+  --variety-disabled: var(--text-disabled);
+}
+
+:root {
+  --salon-service-border: var(--table-delivery-border);
+  --salon-service-header: var(--table-delivery-surface);
+  --salon-service-color: var(--table-delivery-color);
+  --salon-service-hover: color-mix(
+    in srgb,
+    var(--table-delivery-surface) 35%,
+    var(--surface-panel)
+  );
+}

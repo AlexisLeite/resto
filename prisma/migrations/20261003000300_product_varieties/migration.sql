@@ -1,0 +1,2 @@
+ALTER TABLE "Product" ADD COLUMN "varieties" JSONB NOT NULL DEFAULT '[]';
+ALTER TABLE "OrderItem" ADD COLUMN "varieties" JSONB NOT NULL DEFAULT '[]';

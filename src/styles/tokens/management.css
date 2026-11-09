@@ -1,0 +1,14 @@
+:root {
+  --product-editor-height: 44rem;
+  --category-list-height: 45dvh;
+  --management-editor-width: 48rem;
+  --management-form-width: 38rem;
+  --management-ticket-width: 21rem;
+  --management-list-bg: var(--surface-panel);
+  --management-list-hover: var(--surface-muted);
+  --management-list-border: var(--border-default);
+  --management-accent: var(--primary);
+  --management-summary-bg: var(--surface-panel);
+  --management-summary-border: var(--border-default);
+  --management-note-bg: var(--warning-readonly);
+}

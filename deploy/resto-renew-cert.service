@@ -1,0 +1,10 @@
+[Unit]
+Description=Renovar certificado HTTPS de Resto con Tailscale
+Wants=network-online.target tailscaled.service
+After=network-online.target tailscaled.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/resto-renew-cert
+TimeoutStartSec=180
+UMask=0077

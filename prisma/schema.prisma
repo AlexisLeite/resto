@@ -1,0 +1,231 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  WAITER
+  KITCHEN
+  CASHIER
+}
+
+enum Station {
+  KITCHEN
+  BAR
+}
+
+enum ItemStatus {
+  PENDING
+  PREPARING
+  READY
+  DELIVERED
+  BILLABLE
+  CANCELLED
+}
+
+enum PaymentMethod {
+  CASH
+  CARD
+  TRANSFER
+}
+
+model Restaurant {
+  waitersCanCharge Boolean @default(false)
+  id         String         @id @default(cuid())
+  slug       String         @unique
+  name       String
+  timezone   String         @default("America/Montevideo")
+  currency   String         @default("UYU") @db.Char(3)
+  createdAt  DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt  DateTime       @updatedAt @db.Timestamptz(3)
+  users      User[]
+  tables     DiningTable[]
+  categories Category[]
+  products   Product[]
+  sessions   TableSession[]
+  shifts     CashShift[]
+  events     AuditEvent[]
+}
+
+model User {
+  id             String        @id @default(cuid())
+  restaurantId   String
+  restaurant     Restaurant    @relation(fields: [restaurantId], references: [id])
+  name           String
+  username       String        @unique
+  passwordHash   String
+  role           Role
+  roles          Role[]        @default([])
+  active         Boolean       @default(true)
+  failedAttempts Int           @default(0)
+  lockedUntil    DateTime?
+  createdAt      DateTime      @default(now()) @db.Timestamptz(3)
+  authSessions   AuthSession[]
+  orders         Order[]
+
+  @@index([restaurantId])
+}
+
+model AuthSession {
+  tokenHash String   @id
+  activeRole Role    @default(WAITER)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime @db.Timestamptz(3)
+
+  @@index([expiresAt])
+}
+
+model Category {
+  id           String     @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  name         String
+  position     Int        @default(0)
+  products     Product[]
+
+  @@unique([restaurantId, name])
+}
+
+model Product {
+  id           String      @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id])
+  categoryId   String
+  category     Category    @relation(fields: [categoryId], references: [id])
+  name         String
+  description  String      @default("")
+  imageUrl     String      @default("")
+  price        Decimal     @db.Decimal(12, 2)
+  available    Boolean     @default(true)
+  active       Boolean     @default(true)
+  station      Station     @default(KITCHEN)
+  varieties    Json        @default("[]")
+  addons       Json        @default("[]")
+  items        OrderItem[]
+
+  @@index([restaurantId, active])
+}
+
+model DiningTable {
+  id           String         @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant     @relation(fields: [restaurantId], references: [id])
+  name         String
+  seats        Int            @default(4)
+  active       Boolean        @default(true)
+  deletedAt    DateTime?      @db.Timestamptz(3)
+  sessions     TableSession[]
+
+  @@index([restaurantId, name])
+}
+
+model TableSession {
+  id           String      @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id])
+  tableId      String?
+  saleRequest  Json?
+  table        DiningTable? @relation(fields: [tableId], references: [id])
+  guests       Int
+  openedBy     String
+  openedAt     DateTime    @default(now()) @db.Timestamptz(3)
+  closedAt     DateTime?   @db.Timestamptz(3)
+  orders       Order[]
+  preparations PaymentPreparation[]
+  payment      Payment?
+
+  @@index([restaurantId, closedAt])
+}
+
+model Order {
+  id          String       @id @default(cuid())
+  requestKey  String       @unique
+  sessionId   String
+  session     TableSession @relation(fields: [sessionId], references: [id])
+  createdById String
+  createdBy   User         @relation(fields: [createdById], references: [id])
+  createdAt   DateTime     @default(now()) @db.Timestamptz(3)
+  items       OrderItem[]
+
+  @@index([sessionId])
+}
+
+model OrderItem {
+  id                 String     @id @default(cuid())
+  orderId            String
+  order              Order      @relation(fields: [orderId], references: [id])
+  productId          String
+  product            Product    @relation(fields: [productId], references: [id])
+  name               String
+  unitPrice          Decimal    @db.Decimal(12, 2)
+  quantity           Int
+  extras             String[]
+  notes              String     @default("")
+  station            Station
+  status             ItemStatus @default(PENDING)
+  varieties          Json       @default("[]")
+  cancellationReason String?
+  updatedAt          DateTime   @updatedAt @db.Timestamptz(3)
+
+  @@index([orderId, status])
+}
+
+model CashShift {
+  id           String     @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  openedBy     String
+  closedBy     String?
+  openedAt     DateTime   @default(now()) @db.Timestamptz(3)
+  closedAt     DateTime?  @db.Timestamptz(3)
+  openingCash  Decimal    @db.Decimal(12, 2)
+  closingCash  Decimal?   @db.Decimal(12, 2)
+  expectedCash Decimal?   @db.Decimal(12, 2)
+  notes        String     @default("")
+  payments     Payment[]
+
+  @@index([restaurantId, closedAt])
+}
+
+model Payment {
+  id         String        @id @default(cuid())
+  sessionId  String        @unique
+  session    TableSession  @relation(fields: [sessionId], references: [id])
+  shiftId    String
+  shift      CashShift     @relation(fields: [shiftId], references: [id])
+  amount     Decimal       @db.Decimal(12, 2)
+  serviceAmount Decimal    @default(0) @db.Decimal(12, 2)
+  method     PaymentMethod
+  receivedBy String
+  createdAt  DateTime      @default(now()) @db.Timestamptz(3)
+
+  @@index([shiftId])
+}
+
+model AuditEvent {
+  id           String     @id @default(cuid())
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  actorId      String
+  actorName    String
+  action       String
+  detail       String
+  createdAt    DateTime   @default(now()) @db.Timestamptz(3)
+
+  @@index([restaurantId, createdAt])
+}
+
+model PaymentPreparation {
+  requestKey String @id
+  sessionId String
+  session TableSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  actorId String
+  decision String
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+}

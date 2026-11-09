@@ -1,0 +1,157 @@
+:root {
+  --surface-sidebar: var(--palette-sidebar);
+  --text-sidebar: var(--palette-sidebar-text);
+  --text-sidebar-muted: var(--palette-sidebar-muted);
+  --surface-sidebar-hover: color-mix(
+    in srgb,
+    var(--text-sidebar) 8%,
+    var(--surface-sidebar)
+  );
+  --surface-sidebar-selected: color-mix(
+    in srgb,
+    var(--text-sidebar) 15%,
+    var(--surface-sidebar)
+  );
+  --surface-dialog-backdrop: color-mix(
+    in srgb,
+    var(--palette-shadow) 48%,
+    var(--transparent)
+  );
+  --floor-grid-line: color-mix(
+    in srgb,
+    var(--border-default) 50%,
+    var(--transparent)
+  );
+  --surface-page: var(--palette-background);
+  --surface-panel: var(--palette-paper);
+  --surface-navigation: var(--palette-navigation);
+  --text-navigation: var(--palette-navigation-text);
+  --border-navigation: color-mix(in srgb, var(--text-navigation) 30%, var(--surface-navigation));
+  --navigation-hover: color-mix(in srgb, var(--text-navigation) 12%, var(--surface-navigation));
+  --navigation-active: color-mix(in srgb, var(--text-navigation) 20%, var(--surface-navigation));
+  --surface-muted: var(--palette-elevated);
+  --text-primary: var(--palette-text);
+  --text-secondary: var(--palette-muted);
+  --text-disabled: var(--palette-disabled);
+  --border-default: var(--palette-border);
+  --border-strong: var(--palette-border-strong);
+  --primary: var(--palette-primary);
+  --secondary: var(--palette-secondary);
+  --success: var(--palette-success);
+  --warning: var(--palette-warning);
+  --error: var(--palette-error);
+  --info: var(--palette-info);
+  --transparent: var(--palette-transparent);
+  --shadow-panel: 0 2px 8px
+    color-mix(in srgb, var(--palette-shadow) 5%, var(--transparent));
+  --shadow-raised: 0 8px 24px
+    color-mix(in srgb, var(--palette-shadow) 12%, var(--transparent));
+  --focus-ring: var(--primary-focus);
+  --link-color: var(--primary);
+  --link-hover: var(--primary-hover);
+  --selection-background: var(--primary-selected);
+  --selection-color: var(--text-primary);
+  --scrollbar-track: var(--surface-muted);
+  --scrollbar-thumb: var(--border-strong);
+  --scrollbar-hover: var(--text-secondary);
+  --primary-hover: var(--palette-primary-dark);
+  --primary-active: var(--palette-primary-light);
+  --primary-focus: var(--primary);
+  --primary-disabled: color-mix(
+    in srgb,
+    var(--primary) 15%,
+    var(--surface-muted)
+  );
+  --primary-readonly: color-mix(
+    in srgb,
+    var(--primary) 6%,
+    var(--surface-panel)
+  );
+  --primary-selected: color-mix(
+    in srgb,
+    var(--primary) 12%,
+    var(--surface-panel)
+  );
+  --secondary-hover: color-mix(
+    in srgb,
+    var(--secondary) 85%,
+    var(--text-primary)
+  );
+  --secondary-active: color-mix(
+    in srgb,
+    var(--secondary) 70%,
+    var(--text-primary)
+  );
+  --secondary-focus: var(--secondary);
+  --secondary-disabled: color-mix(
+    in srgb,
+    var(--secondary) 15%,
+    var(--surface-muted)
+  );
+  --secondary-readonly: color-mix(
+    in srgb,
+    var(--secondary) 6%,
+    var(--surface-panel)
+  );
+  --secondary-selected: color-mix(
+    in srgb,
+    var(--secondary) 12%,
+    var(--surface-panel)
+  );
+  --success-hover: color-mix(in srgb, var(--success) 85%, var(--text-primary));
+  --success-active: color-mix(in srgb, var(--success) 70%, var(--text-primary));
+  --success-focus: var(--success);
+  --success-disabled: color-mix(
+    in srgb,
+    var(--success) 15%,
+    var(--surface-muted)
+  );
+  --success-readonly: color-mix(
+    in srgb,
+    var(--success) 6%,
+    var(--surface-panel)
+  );
+  --success-selected: color-mix(
+    in srgb,
+    var(--success) 12%,
+    var(--surface-panel)
+  );
+  --warning-hover: color-mix(in srgb, var(--warning) 85%, var(--text-primary));
+  --warning-active: color-mix(in srgb, var(--warning) 70%, var(--text-primary));
+  --warning-focus: var(--warning);
+  --warning-disabled: color-mix(
+    in srgb,
+    var(--warning) 15%,
+    var(--surface-muted)
+  );
+  --warning-readonly: color-mix(
+    in srgb,
+    var(--warning) 6%,
+    var(--surface-panel)
+  );
+  --warning-selected: color-mix(
+    in srgb,
+    var(--warning) 12%,
+    var(--surface-panel)
+  );
+  --error-hover: color-mix(in srgb, var(--error) 85%, var(--text-primary));
+  --error-active: color-mix(in srgb, var(--error) 70%, var(--text-primary));
+  --error-focus: var(--error);
+  --error-disabled: color-mix(in srgb, var(--error) 15%, var(--surface-muted));
+  --error-readonly: color-mix(in srgb, var(--error) 6%, var(--surface-panel));
+  --error-selected: color-mix(in srgb, var(--error) 12%, var(--surface-panel));
+  --info-hover: color-mix(in srgb, var(--info) 85%, var(--text-primary));
+  --info-active: color-mix(in srgb, var(--info) 70%, var(--text-primary));
+  --info-focus: var(--info);
+  --info-disabled: color-mix(in srgb, var(--info) 15%, var(--surface-muted));
+  --info-readonly: color-mix(in srgb, var(--info) 6%, var(--surface-panel));
+  --info-selected: color-mix(in srgb, var(--info) 12%, var(--surface-panel));
+}
+
+:root {
+  --table-occupied-color: var(--palette-stone-blue);
+  --table-occupied-surface: var(--palette-stone-blue-fill);
+  --table-delivery-color: var(--palette-honey);
+  --table-delivery-surface: var(--palette-honey-fill);
+  --table-delivery-border: var(--palette-honey-border);
+}

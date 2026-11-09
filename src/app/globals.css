@@ -1,0 +1,101 @@
+@import "../styles/themes/resto.css";
+@import "../styles/tokens/primitives.css";
+@import "../styles/tokens/semantics.css";
+@import "../styles/tokens/components.css";
+@import "../styles/tokens/salon.css";
+@import "../styles/tokens/management.css";
+@import "../styles/tokens/desktop.css";
+@import "../styles/ui.css";
+@import "../styles/app.css";
+@import "../styles/salon.css";
+@import "../styles/management.css";
+@import "../styles/desktop.css";
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+body {
+  margin: var(--space-0);
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-md);
+  line-height: var(--line-normal);
+}
+h1,
+h2,
+h3,
+p {
+  margin: var(--space-0);
+}
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+a {
+  color: var(--link-color);
+  text-decoration-thickness: var(--underline-thickness);
+  text-underline-offset: var(--underline-offset);
+}
+a:hover {
+  color: var(--link-hover);
+}
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+}
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+fieldset {
+  min-width: 0;
+  border: 0;
+  padding: var(--space-0);
+  margin: var(--space-0);
+}
+summary {
+  cursor: pointer;
+  color: var(--link-color);
+}
+summary:hover {
+  color: var(--link-hover);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: var(--motion-none) !important;
+    animation-duration: var(--motion-none) !important;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+button:disabled {
+  cursor: not-allowed;
+}

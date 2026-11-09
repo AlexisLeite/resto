@@ -1,0 +1,49 @@
+:root {
+  --button-bg: var(--primary);
+  --button-color: var(--palette-on-primary);
+  --button-hover: var(--primary-hover);
+  --button-active: var(--primary-active);
+  --button-disabled: var(--primary-disabled);
+  --button-disabled-color: var(--text-disabled);
+  --button-focus: var(--primary-focus);
+  --button-selected: var(--primary-active);
+  --button-padding: var(--space-2) var(--space-4);
+  --button-radius: var(--radius-sm);
+  --control-bg: var(--surface-panel);
+  --control-color: var(--text-primary);
+  --control-border: var(--border-strong);
+  --control-hover: var(--surface-panel);
+  --control-hover-border: var(--text-secondary);
+  --control-active: var(--primary-readonly);
+  --control-focus: var(--primary-focus);
+  --control-focus-offset: var(--space-0);
+  --control-disabled: var(--surface-muted);
+  --control-disabled-color: var(--text-disabled);
+  --control-readonly: var(--primary-readonly);
+  --control-selected: var(--primary-selected);
+  --control-error: var(--error);
+  --control-placeholder: var(--text-disabled);
+  --control-autofill-shadow: 0 0 0 100vmax var(--control-bg) inset;
+  --control-padding: var(--space-2) var(--space-3);
+  --control-radius: var(--radius-sm);
+  --panel-padding: var(--space-6);
+  --panel-gap: var(--space-5);
+  --page-padding: var(--space-8);
+  --page-gap: var(--space-6);
+  --nav-hover: var(--surface-muted);
+  --nav-active: var(--primary-selected);
+  --badge-bg: var(--surface-muted);
+  --badge-color: var(--text-secondary);
+}
+
+:root {
+  --opacity-dragging: 0.35;
+}
+
+:root {
+  --layer-nav-indicator: -1;
+}
+:root {
+  --menu-photo-size: 7rem;
+  --menu-catalog-min-height: var(--viewport-min-height);
+}

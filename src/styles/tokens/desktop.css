@@ -1,0 +1,15 @@
+:root {
+  --desktop-navigation-width: 18rem;
+  --desktop-order-width: 23rem;
+  --desktop-product-min: 18rem;
+  --desktop-product-row-height: 6rem;
+  --desktop-content-width: 80rem;
+  --desktop-editor-width: 56rem;
+  --desktop-checkout-width: 23rem;
+  --desktop-search-width: 30rem;
+  --desktop-table-min: 13rem;
+  --desktop-price-width: 8rem;
+  --desktop-row-actions-width: 12rem;
+  --desktop-nav-item-width: 5rem;
+  --desktop-nav-order-width: 12rem;
+}

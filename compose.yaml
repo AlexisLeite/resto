@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: resto_migrations
+      POSTGRES_PASSWORD: resto_migrations_local
+      POSTGRES_DB: resto_dev
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - resto_postgres:/var/lib/postgresql
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/10-resto.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U resto_migrations -d resto_dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  resto_postgres:
